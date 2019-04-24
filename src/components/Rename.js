@@ -15,7 +15,7 @@ const Title = styled.span`
 `
 
 const Wrapper = styled.div`
-  flex: 0.7;
+  flex: 1;
   padding: 20px 10px;
 `
 
