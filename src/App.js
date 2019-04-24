@@ -1,28 +1,21 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+import { Match, MatchFirst, Redirect } from 'react-location'
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
-    );
-  }
+import config from './config'
+import { Config } from './contexts'
+import { List, Rename } from './components'
+
+const App = (props) => {
+  return (
+    <Config.Provider value={config}>
+      <MatchFirst>
+        <Match path='/all/:page'><List /></Match>
+        <Match path='/rename/:id'><Rename /></Match>
+        <Match path='/tag/:tag/:page'><List /></Match>
+        <Redirect to='/all/1' />
+      </MatchFirst>
+    </Config.Provider>
+  )
 }
 
-export default App;
+export default App
