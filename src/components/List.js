@@ -25,7 +25,7 @@ const List = (props) => {
   }, [api])
 
   useEffect(() => {
-    async function fetchData (page) {
+    async function fetchData () {
       setResults({})
       const { data: { files, total_files: total } } = await axios.get(`${api}/files?page=${currentPage}${currentTag.length ? '&tag=' + currentTag : ''}`)
       setResults({
@@ -34,7 +34,7 @@ const List = (props) => {
         total
       })
     }
-    fetchData(currentPage)
+    fetchData()
   }, [api, currentPage, currentTag])
 
   const store = {
