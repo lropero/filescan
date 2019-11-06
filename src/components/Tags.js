@@ -1,4 +1,4 @@
-import React, { Fragment, useContext, useState } from 'react'
+import React, { useContext, useState } from 'react'
 import styled from 'styled-components'
 import { animated, config, useSpring } from 'react-spring'
 import { FiArrowLeft, FiMenu } from 'react-icons/fi'
@@ -80,17 +80,19 @@ const Tags = (props) => {
     navigate(pathname)
   }
 
-  const contents = <Fragment>
-    <Title isDrawerOpen={isDrawerOpen}>Tags</Title>
-    <List>
-      {tags.map(({ tag, files }, index) => (
-        <li key={index}><Link onClick={() => linkTo(`/tag/${tag}/1`)}>{tag}</Link> ({files})</li>
-      ))}
-    </List>
-  </Fragment>
+  const contents = (
+    <>
+      <Title isDrawerOpen={isDrawerOpen}>Tags</Title>
+      <List>
+        {tags.map(({ tag, files }, index) => (
+          <li key={index}><Link onClick={() => linkTo(`/tag/${tag}/1`)}>{tag}</Link> ({files})</li>
+        ))}
+      </List>
+    </>
+  )
 
   return (
-    <Fragment>
+    <>
       <Drawer style={{ left }}>
         <FiArrowLeft color='black' onClick={() => setIsDrawerOpen(false)} size='2em' />
         {contents}
@@ -100,7 +102,7 @@ const Tags = (props) => {
         <FiMenu color='black' onClick={() => setIsDrawerOpen(true)} size='2em' />
       </Menu>
       <Wrapper>{contents}</Wrapper>
-    </Fragment>
+    </>
   )
 }
 

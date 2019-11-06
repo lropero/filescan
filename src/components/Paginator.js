@@ -11,12 +11,16 @@ const Page = styled.span`
 `
 
 const Paginator = ({ currentPage, currentTag, pages }) => {
-  return pages > 1 && <div>{Array(pages).fill('').map((page, index) => {
-    const isCurrentPage = parseInt(currentPage, 10) === index + 1
-    return isCurrentPage
-      ? <Page isCurrentPage key={index}>{index + 1}</Page>
-      : <Link key={index} to={`/${currentTag ? 'tag/' + currentTag : 'all'}/${index + 1}`}><Page>{index + 1}</Page></Link>
-  })}</div>
+  return pages > 1 && (
+    <div>
+      {Array(pages).fill('').map((page, index) => {
+        const isCurrentPage = parseInt(currentPage, 10) === index + 1
+        return isCurrentPage
+          ? <Page isCurrentPage key={index}>{index + 1}</Page>
+          : <Link key={index} to={`/${currentTag ? 'tag/' + currentTag : 'all'}/${index + 1}`}><Page>{index + 1}</Page></Link>
+      })}
+    </div>
+  )
 }
 
 export default Paginator
