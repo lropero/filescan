@@ -23,7 +23,6 @@ List of dependencies:
 * react-scripts: Added by CRA
 * react-spring: Used to animate the Drawer menu (on smaller viewports)
 * styled-components: Used to style components
-* standard: Used for linting purposes
 
 ### Time spent
 
